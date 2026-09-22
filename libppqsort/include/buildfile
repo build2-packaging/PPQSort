@@ -14,6 +14,17 @@ lib{ppqsort}:
   cxx.export.libs = $intf_libs
 }
 
+# The public headers use std::thread, std::mutex, and other pthread-backed
+# C++ standard library facilities, so pthread must also be exported to
+# consumers.
+#
+if ($cxx.target.system != 'win32-msvc')
+{
+  cxx.libs += -pthread
+
+  lib{ppqsort}: cxx.export.libs += -pthread
+}
+
 # Install recreating subdirectories.
 #
 hxx{*}:
