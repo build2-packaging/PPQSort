@@ -1,16 +1,18 @@
 : 1
 name: libppqsort
-version: 0.1.0-a.0.z
+version: 1.0.6-a.0.z
 type: lib,binless
 language: c++
-project: build2-PPQSort
-summary: ppqsort C++ library
+project: ppqsort
+summary: Parallel quicksort C++ library
 license: MIT ; MIT License.
+topics: sorting algorithm, parallel sorting, parallel algorithms
+keywords: sort pdqsort multithreading openmp concurrency
 description-file: README.md
 package-description-file: PACKAGE-README.md
-url: https://example.org/upstream
-email: upstream@example.org
-package-url: https://github.com/build2-packaging/build2-PPQSort
+url: https://github.com/GabTux/PPQSort
+email: hevrgabriel@gmail.com
+package-url: https://github.com/build2-packaging/PPQSort
 package-email: packaging@build2.org ; Mailing list.
 depends: * build2 >= 0.18.0
 depends: * bpkg >= 0.18.0
