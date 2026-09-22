@@ -1,0 +1,3 @@
+import libs = libppqsort%lib{ppqsort}
+
+exe{driver}: {hxx cxx}{**} $libs testscript{**}
