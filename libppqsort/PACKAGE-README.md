@@ -10,6 +10,14 @@ It exposes a `std::sort`-like API driven by `ppqsort::execution` policies
 (which defines `_OPENMP`) makes the parallel policies use an OpenMP-based
 backend instead, unless `FORCE_CPP` is defined.
 
+Compared to upstream, the `std::thread` pool is patched to not release its
+semaphore beyond its maximum (see upstream issue [#10][ppqsort-10] and
+Tracy's [`ppqsort-semaphore.patch`][tracy-semaphore]) and to wait for all
+queued tasks before stopping.
+
+[ppqsort-10]: https://github.com/GabTux/PPQSort/issues/10
+[tracy-semaphore]: https://github.com/wolfpld/tracy/blob/5bbafeabd7c38bcf7c264769a48e973173fd0430/cmake/ppqsort-semaphore.patch
+
 
 ## Usage
 
