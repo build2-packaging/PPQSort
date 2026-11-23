@@ -1,7 +1,21 @@
-libs =
-#import libs += libhello%lib{hello}
+import libs  = libppqsort%lib{ppqsort}
 
-exe{libppqsort-tests}: {hxx ixx txx cxx}{**} $libs testscript
+# liba{gtest_main} links the static gtest, so link gmock statically too.
+# Otherwise gmock brings in the shared gtest as well, which fails to link
+# on Windows with multiple definitions.
+#
+import libs += gmock%liba{gmock}
+import libs += gtest%liba{gtest_main}
+
+exe{libppqsort-tests}: {hxx ixx txx cxx}{**} $libs
+exe{libppqsort-tests}: test = true
+
+# The ppqsort.cpp object exceeds the 32767 section limit of the regular
+# PE/COFF object format in non-optimized builds. Use the big object format
+# with MinGW GCC (the MSVC equivalent is /bigobj).
+#
+if ($cxx.target.class == 'windows' && $cxx.id == 'gcc')
+  obje{ppqsort}: cxx.coptions += -Wa,-mbig-obj
 
 out_pfx = [dir_path] $out_root/source/
 src_pfx = [dir_path] $src_root/source/
