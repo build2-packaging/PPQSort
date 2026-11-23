@@ -1,45 +1,14 @@
-# libppqsort-tests - An executable
+# libppqsort-tests - Parallel quicksort C++ library (tests)
 
-This is a `build2` package for the [`<UPSTREAM-NAME>`](https://<UPSTREAM-URL>)
-executable. It is a <SUMMARY-OF-FUNCTIONALITY>.
-
-Note that the `libppqsort-tests` executable in this package provides `build2` metadata.
-
-
-## Usage
-
-To start using `libppqsort-tests` in your project, add the following build-time
-`depends` value to your `manifest`, adjusting the version constraint as
-appropriate:
-
-```
-depends: * libppqsort-tests ^<VERSION>
-```
-
-Then import the executable in your `buildfile`:
-
-```
-import! [metadata] <TARGET> = libppqsort-tests%exe{<TARGET>}
-```
+This is a `build2` package containing the test suite for the
+[`PPQSort`](https://github.com/GabTux/PPQSort) library.
 
 
 ## Importable targets
 
-This package provides the following importable targets:
-
-```
-exe{<TARGET>}
-```
-
-<DESCRIPTION-OF-IMPORTABLE-TARGETS>
+This package exports no targets.
 
 
 ## Configuration variables
 
-This package provides the following configuration variables:
-
-```
-[bool] config.libppqsort_tests.<VARIABLE> ?= false
-```
-
-<DESCRIPTION-OF-CONFIG-VARIABLES>
+This package provides no configuration variables.
