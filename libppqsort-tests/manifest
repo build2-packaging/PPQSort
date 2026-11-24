@@ -1,6 +1,6 @@
 : 1
 name: libppqsort-tests
-version: 1.0.6-a.0.z
+version: 1.0.6
 type: exe
 language: c++
 project: ppqsort
