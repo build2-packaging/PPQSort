@@ -1,0 +1,8 @@
+: 1
+name: libppqsort-tests
+version: 1.0.6
+type: exe
+language: c++
+project: ppqsort
+summary: Parallel quicksort C++ library (tests)
+license: MIT; MIT License.
