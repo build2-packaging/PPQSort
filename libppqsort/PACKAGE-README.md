@@ -13,10 +13,14 @@ backend instead, unless `FORCE_CPP` is defined.
 Compared to upstream, the `std::thread` pool is patched to not release its
 semaphore beyond its maximum (see upstream issue [#10][ppqsort-10] and
 Tracy's [`ppqsort-semaphore.patch`][tracy-semaphore]) and to wait for all
-queued tasks before stopping.
+queued tasks before stopping. The `<syncstream>` include of the unused debug
+macros is dropped so that builds without `NDEBUG` compile with Apple Clang 15
+(Tracy disables the same debug block with
+[`ppqsort-nodebug.patch`][tracy-nodebug]).
 
 [ppqsort-10]: https://github.com/GabTux/PPQSort/issues/10
 [tracy-semaphore]: https://github.com/wolfpld/tracy/blob/5bbafeabd7c38bcf7c264769a48e973173fd0430/cmake/ppqsort-semaphore.patch
+[tracy-nodebug]: https://github.com/wolfpld/tracy/blob/2875926cdbf842bcedd433581e434fb6616f09d6/cmake/ppqsort-nodebug.patch
 
 
 ## Usage

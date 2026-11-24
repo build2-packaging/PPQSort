@@ -1,0 +1,10 @@
+--- parameters.h.orig	2026-11-23 18:08:40 +0100
++++ parameters.h	2026-11-24 13:53:06 +0100
+@@ -7,7 +7,6 @@
+ #ifndef NDEBUG
+     #include <bitset>
+     #include <iostream>
+-    #include <syncstream>
+     #define TO_S(val) std::to_string(val)
+     #define PRINT_ITERATORS(lp, rp, msg)                               \
+         std::cout << msg << ": ";                                      \
