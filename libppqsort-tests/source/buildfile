@@ -17,6 +17,13 @@ exe{libppqsort-tests}: test = true
 if ($cxx.target.class == 'windows' && $cxx.id == 'gcc')
   obje{ppqsort}: cxx.coptions += -Wa,-mbig-obj
 
+# Benign narrowing in the libppqsort headers (thread counts and block
+# lengths of at most 1024) and the tests (sizes of at most 100000 and
+# ranges checked to fit the element type).
+#
+if ($cxx.id == 'msvc')
+  cxx.coptions += /wd4244 /wd4267
+
 out_pfx = [dir_path] $out_root/source/
 src_pfx = [dir_path] $src_root/source/
 
