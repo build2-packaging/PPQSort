@@ -1,3 +1,9 @@
 import libs = libppqsort%lib{ppqsort}
 
 exe{driver}: {hxx cxx}{**} $libs testscript{**}
+
+# Benign narrowing in the libppqsort headers (thread counts and block
+# lengths of at most 1024).
+#
+if ($cxx.id == 'msvc')
+  cxx.coptions += /wd4244 /wd4267
