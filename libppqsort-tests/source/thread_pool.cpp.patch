@@ -1,0 +1,36 @@
+--- thread_pool.cpp.orig	2026-11-23 15:29:45.967026540 +0100
++++ thread_pool.cpp	2026-11-24 00:29:53.691830025 +0100
+@@ -94,7 +94,7 @@
+         pool.threads_queues_[0].mutex_.lock();
+         pool.threads_queues_[1].mutex_.lock();
+ 
+-        std::jthread t1([&](){
++        std::thread t1([&](){
+             // try to push, should fallback to waiting for the first queue
+             pool.push_task([&](){ ++counter; });
+         });
+@@ -104,6 +104,7 @@
+         pool.threads_queues_[0].mutex_.unlock();
+         pool.threads_queues_[1].mutex_.unlock();
+         pool.wait_and_stop();
++        t1.join();
+ 
+         ASSERT_EQ(counter, 1);
+     }
+@@ -123,7 +124,7 @@
+         pool.threads_queues_[1].mutex_.lock();
+ 
+ 
+-        std::jthread t1([&](){
++        std::thread t1([&](){
+             // push normally to wake up the threads, will wait until mutexes are unlocked
+             pool.push_task([&](){ ++counter; });
+         });
+@@ -134,6 +135,7 @@
+         pool.threads_queues_[1].mutex_.unlock();
+ 
+         pool.wait_and_stop();
++        t1.join();
+         ASSERT_EQ(counter, 3);
+     }
+ 
