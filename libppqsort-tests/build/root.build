@@ -1,6 +1,10 @@
 # Uncomment to suppress warnings coming from external libraries.
 #
-#cxx.internal.scope = current
+cxx.internal.scope = current
+
+# Treat lib{ppqsort}, the library under test, as internal.
+#
+cxx.internal.libs = ppqsort
 
 cxx.std = latest
 
